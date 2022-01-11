@@ -23,8 +23,8 @@ const Weapons = (props) => {
     values.forEach((element, key) => {
       priceArray[key] = element[1] * element[2];
     });
-    // setTotalPrice(Number(priceArray.reduce(reducer)).toFixed(1));
-    setTotalPrice(priceArray.reduce(reducer));
+    setTotalPrice(Number(priceArray.reduce(reducer)).toFixed(1));
+    // setTotalPrice(priceArray.reduce(reducer));
   }
 
   const purchaseBtn = () => {

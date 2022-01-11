@@ -1,0 +1,25 @@
+[debug] [2022-01-08T18:54:04.055Z] ----------------------------------------------------------------------
+[debug] [2022-01-08T18:54:04.058Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Cooker\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-01-08T18:54:04.059Z] CLI Version:   10.0.1
+[debug] [2022-01-08T18:54:04.059Z] Platform:      win32
+[debug] [2022-01-08T18:54:04.059Z] Node Version:  v14.17.0
+[debug] [2022-01-08T18:54:04.069Z] Time:          Sat Jan 08 2022 13:54:04 GMT-0500 (Eastern Standard Time)
+[debug] [2022-01-08T18:54:04.069Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-08T18:54:04.164Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-08T18:54:04.164Z] > authorizing via signed-in user (cooker98910@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  E:\WORK\Gunwar\shop
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

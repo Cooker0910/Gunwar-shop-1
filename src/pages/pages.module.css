@@ -1,0 +1,81 @@
+.preview {
+    /* height: 230px; */
+    /* background: url('../assets/preview.png'); */
+    background-size: cover;
+    background-color: unset;
+    border: unset;
+    overflow: hidden;
+}
+.nft {
+    height: 40vh;
+    width: 100%;
+    border-radius: 20px;
+}
+.pColor {
+    color: #ffffff;
+    font-family: 'Oxanium', cursive;
+}
+.youtube {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.card {
+    background-color: #142c21;
+    border-radius: 10px;
+    min-height: 423px;
+}
+.number {
+    color: #fff;
+    width: 100px;
+    background-color: rgb(35, 87, 28);
+}
+
+.btnColor{
+    /* display: inline-flex; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    background-color: #e4a101;
+    border-color: #e4a101;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px 23px;
+    display: block;
+    line-height: 1;
+    position: relative;
+    font-family: 'Oxanium', cursive;
+    cursor: pointer;
+    font-weight: 500;
+}
+.p30 {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.purchase {
+    position: relative;
+    height: 80px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.purchase div {
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-family: 'Oxanium', cursive;
+}
+.purchaseBtn {
+    margin-top: 10px;
+}
+model-viewer {
+    height: 40vh;
+    background-image: radial-gradient(#ffffff, #726e6e);
+    width: 100%;
+    border-radius: 20px;
+}

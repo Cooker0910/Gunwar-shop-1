@@ -34,12 +34,19 @@ const Header = (props) => {
               >
               </Nav>
               <Form className="d-flex">
-                <main>
+                <main className={styles.connectBtn}>
                   {props.web3Provider ? (
-                    <a className={styles.btnColor} onClick={props.disconnect}>DisConnect</a>
+                    <a className={`${styles.btnColor} custom-button`}>{props.account}</a>
                   ) : (
-                    <a className={styles.btnColor} onClick={props.connect}>Connect Wallet</a>
+                    <a className={`${styles.btnColor} custom-button`} onClick={props.connect}>Connect Wallet</a>
                   )}
+                  <div className={styles.disconnect}>
+                    <ul>
+                      <li>
+                        <a onClick={props.disconnect}>Disconnect</a>
+                      </li>
+                    </ul>
+                  </div>
                 </main>
               </Form>
               </Navbar.Collapse>

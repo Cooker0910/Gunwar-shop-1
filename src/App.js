@@ -5,14 +5,14 @@ import 'react-responsive-modal/styles.css';
 
 import React, { useEffect, useState, useCallback, useReducer } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Modal } from 'react-responsive-modal';
+// import { Modal } from 'react-responsive-modal';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import Web3Modal from "web3modal";
 // import Portis from "@portis/web3";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 // import WalletLink from 'walletlink'
-import { providers, ethers } from 'ethers'
+import { providers, ethers, BigNumber } from 'ethers'
 
 import AppLayout from './layouts/AppLayout';
 import routes from './routes/route';
@@ -20,8 +20,9 @@ import ContactUs from './components/ContactUs';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NotFound from './pages/NotFound';
-// import modelPath from '../assets/scene.glb';
-import check from './assets/check.png';
+import OpenModal from './components/Modal';
+import successImg from './assets/check.png';
+import warningImg from './assets/alarm.png';
 
 const supportedChains = [
   {
@@ -304,18 +305,38 @@ function reducer(state, action) {
   }
 }
 
-var adminWallet = '0x52aC1AD50ECf7726CB666A8bb3B3b443a6824d7e'
+var adminWallet = '0x52aC1AD50ECf7726CB666A8bb3B3b443a6824d7e';
+const successMessage = "You have purchased successfully.";
+const warningMessage = "BNB balance is not enough.";
+const notPurchase = "You didn't select any NFT.";
+
 const App = () => {
   const [account, setAccount] = useState('');
   const [signer_1, setSigner] = useState();
-
+  const [balance, setBalance] = useState(0);
   const [open, setOpen] = useState(false);
+  const [modalImg, setModalImg] = useState("");
+  const [modalMessage,setModalMessage] = useState("");
+  const [appearAddr, setAppearAddr] = useState("");
 
-  const onOpenModal = () => setOpen(true);
+  const onOpenModal = (img, message) => {
+    setOpen(true);
+    setModalImg(img);
+    setModalMessage(message);
+  }
   const onCloseModal = () => setOpen(false);
 
   const purchase = async(amount) => {
-    const amountBNB = new ethers.utils.parseEther(amount);
+    if (amount == 0.0) {
+      onOpenModal(warningImg, notPurchase);
+      return;
+    }
+    if (balance < amount) {
+      onOpenModal(warningImg, warningMessage);
+      return;
+    }
+    const amountBNB = new ethers.utils.parseEther(amount.toString());
+    console.log(amountBNB);
     const transaction = {
       'to': adminWallet, // faucet address to return eth
       'value': amountBNB
@@ -325,7 +346,7 @@ const App = () => {
     .then( async(result) => {
       const txResult = await result.wait();
       if(txResult.status === 1 && txResult.to === adminWallet) {
-        onOpenModal();
+        onOpenModal(successImg, successMessage);
         console.log("success");
       } else {
         console.log("error");
@@ -340,12 +361,6 @@ const App = () => {
     NotificationManager.warning("Please Change Network to Binance Smart Chain", '', 3000);
   }
 
-  useEffect(() => {
-    setAccount(account);
-    setSigner(signer_1);
-  }, [account, signer_1]);
-
-
   const [state, dispatch] = useReducer(reducer, initialState)
   const { provider, web3Provider, address, chainId } = state
 
@@ -359,12 +374,15 @@ const App = () => {
     // event listeners such as `.on()` will be different.
     const web3Provider = new providers.Web3Provider(provider);
     const signer = web3Provider.getSigner();
-    setSigner(web3Provider.getSigner());
     const address = await signer.getAddress();
+    const buyer_balance = await signer.getBalance();
     const network = await web3Provider.getNetwork();
+    setSigner(web3Provider.getSigner());
+    setAccount(address);
+    setBalance(ethers.utils.formatEther(buyer_balance._hex));
+    setAppearAddr(address.slice(0, 6) + '...' + address.slice(-4, address.length));
 
     if (network.chainId != 56) {
-      console.log('asdf');
       changeNetwork();
       return;
     }
@@ -377,20 +395,6 @@ const App = () => {
       chainId: network.chainId,
     })
   }, [])
-
-  const disconnect = useCallback(
-    async function () {
-      await web3Modal.clearCachedProvider()
-      if (provider?.disconnect && typeof provider.disconnect === 'function') {
-        await provider.disconnect()
-      }
-
-      dispatch({
-        type: 'RESET_WEB3_PROVIDER',
-      })
-    },
-    [provider]
-  )
 
   // Auto connect to the cached provider
   useEffect(() => {
@@ -418,36 +422,38 @@ const App = () => {
         window.location.reload()
       }
 
-      const handleDisconnect = (error) => {
-        // eslint-disable-next-line no-console
-        console.log('disconnect', error)
-        disconnect()
-      }
-
       provider.on('accountsChanged', handleAccountsChanged)
       provider.on('chainChanged', handleChainChanged)
-      provider.on('disconnect', handleDisconnect)
 
       // Subscription Cleanup
       return () => {
         if (provider.removeListener) {
           provider.removeListener('accountsChanged', handleAccountsChanged)
           provider.removeListener('chainChanged', handleChainChanged)
-          provider.removeListener('disconnect', handleDisconnect)
         }
       }
     }
-  }, [provider, disconnect])
+  }, [provider])
 
-  const chainData = getChainData(chainId)
-
-  
+  const disconnect = useCallback(
+    async function () {
+      await web3Modal.clearCachedProvider()
+      if (provider?.disconnect && typeof provider.disconnect === 'function') {
+        await provider.disconnect()
+      }
+      dispatch({
+        type: 'RESET_WEB3_PROVIDER',
+      })
+    },
+    [provider]
+  )
+  const chainData = getChainData(chainId);
 
   return (
     <BrowserRouter>
       <ContactUs />
       <Header 
-        account={setAccount}
+        account={appearAddr}
         signer={setSigner}
         connect={connect}
         disconnect={disconnect}
@@ -474,19 +480,18 @@ const App = () => {
         </Routes>
       </AppLayout>
       <Footer />
-      <Modal 
+      <OpenModal 
         open={open} 
-        onClose={onCloseModal} 
+        onCloseModal={onCloseModal} 
         center 
         showCloseIcon={false}
         classNames={{
           modal: 'customModal'
         }}
+        src={modalImg}
+        message={modalMessage}
       >
-        <img src={check} className='modal-img' />
-        <p>You have purchased successfully.</p>
-        <button className='modal-button' onClick={onCloseModal}>OK</button>
-      </Modal>
+      </OpenModal>
       <NotificationContainer />
     </BrowserRouter>
   );

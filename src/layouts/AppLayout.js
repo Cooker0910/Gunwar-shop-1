@@ -72,10 +72,10 @@ const AppLayout = (props) => {
               </Link>
             </MenuItem>
             <MenuItem
-              active={path === "/stakeGunwar"}
+              active={path === "/stakeGun"}
             // icon={<AiOutlineHeart className="fs-1p5" />}
             >
-              <Link to="/stakeGunwar">
+              <Link to="/stakeGun">
               Stake $GUNW
               </Link>
             </MenuItem>

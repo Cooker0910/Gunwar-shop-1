@@ -62,8 +62,9 @@
 }
 
 .customModal {
-  background: hsl(223deg 68% 57%) !important;
+  background: #6e43ef !important;
   text-align: center !important; 
+  width: 770px;
 }
 .customModal p {
   font-size: 35px;
@@ -72,16 +73,11 @@
 }
 .modal-img {
   width: 90px;
+  margin-top:3vh;
+  margin-bottom: 2vh;
 }
-.modal-button {
-  background: hsl(41deg 98% 49%);
-  padding: 10px 20px;
-  font-size: 20px;
-  width: 100px;
-  border: 10px;
-  color: white;
-  font-family: 'Oxanium';
-  font-weight: 500;
-  box-shadow: 2px 3px #4a32cd;
-  border-radius: 10px;
+.customModal button {
+  width: 160px;
+  margin-top: 5vh;
 }
+

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Boxes = () => {
+
   return (
     <>
       <h1>Coming Soon</h1>

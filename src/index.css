@@ -26,3 +26,54 @@ code {
 html {
   font-size: calc(60% + 0.8vmin) !important;
 }
+.custom-button {
+  height: 60px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 28px;
+  color: #fff;
+  -webkit-filter: drop-shadow(0 0 12px rgba(255, 68, 23, .56));
+  filter: drop-shadow(0 0 12px rgba(255, 68, 23, .56));
+  position: relative;
+  z-index: 1;
+  border-radius: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 15px 23px;
+  line-height: 1;
+  font-family: 'Oxanium', cursive;
+  font-weight: 500;
+}
+
+.custom-button::before {
+  bottom: 0;
+  background: -webkit-gradient(linear,left top,left bottom,from(#fd9c00),to(#fd9925));
+  background: linear-gradient(#fd9c00 0,#fd9925 100%);
+  z-index: -2;
+}
+.custom-button::after{
+  top: 0;
+  background: -webkit-gradient(linear,left top,left bottom,from(#fd9c00),to(#fdc325));
+  background: linear-gradient(#fd9c00 0,#fdc325 100%);
+  z-index: -1;
+}
+.custom-button::after, .custom-button::before {
+  height: calc(100% - 4px);
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  content: "";
+  border-radius: 14px;
+}

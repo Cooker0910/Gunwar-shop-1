@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.jpg';
 import styles from './components.module.css'
 import { Navbar, Container, Nav, Form } from 'react-bootstrap';
 

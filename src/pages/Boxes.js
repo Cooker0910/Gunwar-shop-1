@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import AlertModal from "../components/Modal";
 
 const Boxes = () => {
-
   return (
     <>
-      <h1>Coming Soon</h1>
+      <AlertModal />
     </>
   );
 }

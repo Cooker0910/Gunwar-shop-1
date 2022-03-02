@@ -1,10 +1,10 @@
 .preview {
-  height: 230px;
-  /* background: url('../assets/preview.png'); */
-  background-size: cover;
-  background-color: unset;
-  border: unset;
-  overflow: hidden;
+    height: 230px;
+    /* background: url('../assets/preview.png'); */
+    background-size: cover;
+    background-color: unset;
+    border: unset;
+    overflow: hidden;
 }
 .nft {
     width: 100%;
@@ -24,12 +24,12 @@
     border-radius: 10px;
 }
 .number {
-  color: #fff;
-  width: 90px;
-  /* background-color: #fd9c00; */
-  background: linear-gradient(#fd9c00 0,#fd9925 100%);
-  background: linear-gradient(#fd9c00 0,#fdc325 100%);
+    color: #fff;
+    width: 90px;
+    background: linear-gradient(#fd9c00,#fd9925);
+    background: linear-gradient(#fd9c00,#fdc325);
 }
+
 .p30 {
     padding-right: 30px;
     padding-left: 30px;
@@ -40,13 +40,13 @@
     margin-bottom: 20px;
 }
 .purchase div {
-  position: absolute;
-  margin: 0;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  font-family: 'Oxanium', cursive;
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-family: 'Oxanium', cursive;
 }
 .purchaseBtn {
     margin-top: 10px;
@@ -59,33 +59,42 @@ a:hover {
     color: #f0f0f0;
 }
 .menu{
-  padding: 28px 30px;
-  border-radius: 0 0 14px 14px;
-  background-image: url('../assets/header_bg.jpg');
-  background-position: right center;
-  background-size: cover;
-  position: relative;
+    padding: 28px 30px;
+    border-radius: 0 0 14px 14px;
+    background-image: url('../assets/header_bg.jpg');
+    background-position: right center;
+    background-size: cover;
+    position: relative;
 }
 .sticky {
-  left: 0;
-  margin: auto;
-  position: fixed;
-  /* top: 0; */
-  width: 100%;
-  z-index: 99;
-  background-image: url('../assets/header_bg.jpg');
-  -webkit-animation: 1000ms ease-in-out 0s normal none 1 running fadeInDown;
-  animation: 1000ms ease-in-out 0s normal none 1 running fadeInDown;
-  -webkit-box-shadow: 0 10px 15px rgb(25 25 25 / 10%);
-  box-shadow: 0 10px 15px rgb(25 25 25 / 10%);
-  border-radius: 0;
-  padding: 0;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    /* top: 0; */
+    width: 100%;
+    z-index: 99;
+    background-image: url('../assets/header_bg.jpg');
+    -webkit-animation: 1000ms ease-in-out 0s normal none 1 running fadeInDown;
+    animation: 1000ms ease-in-out 0s normal none 1 running fadeInDown;
+    -webkit-box-shadow: 0 10px 15px rgb(25 25 25 / 10%);
+    box-shadow: 0 10px 15px rgb(25 25 25 / 10%);
+    border-radius: 0;
+    padding: 0;
+}
+.connectBtn {
+    position: relative;
+}
+.disconnectBtn {
+    position: relative;
+}
+.disconnectBtn:hover .disconnect ul {
+    transform: scale(1);
+    -webkit-transform: scale(1);
 }
 .btnColor{
-  font-size: 15px;
-  cursor: pointer;
-  margin-bottom: 0;
-  /* width: 170px; */
+    font-size: 15px;
+    margin-bottom: 0;
+    cursor: pointer;
 }
 .logo {
     height: 50px;
@@ -105,49 +114,43 @@ a:hover {
     margin-top: 15px;
     color: #ffffff;
 }
-
-.connectBtn {
-    position: relative;
-}
-.connectBtn:hover .disconnect ul{
-  transform: scale(1);
-}
 .disconnect {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  padding-top: 10px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding-top: 10px;
 }
-
 .disconnect ul {
-  background: #ffffff;
-  padding: 0;
-  border-top: 2px solid #fd9c00;
-  position: relative;
-  transform: scale(0);
-  transition: all 0.3s;
-  cursor: pointer;
-  z-index: 30;
+    background: #fff;
+    padding: 0;
+    border-top: 2px solid #fd9c00;
+    position: relative;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    transition: all .3s;
+    cursor: pointer;
+    z-index: 30;
 }
 .disconnect ul li {
-  text-align: center;
-  padding: 5px;
-  text-transform: capitalize;
+    text-align: center;
+    padding: 5px;
+    text-transform: capitalize;
 }
 .disconnect ul li a {
-  display: block;
-  color: #000000 !important;
+    display: block;
+    color: #000!important;
 }
 .disconnect ul li::after {
-  content: "";
-  display: block;
-  border-bottom: 10px solid #fd9c00;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  box-sizing: border-box;
+    content: "";
+    display: block;
+    border-bottom: 10px solid #fd9c00;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    box-sizing: border-box;
 }

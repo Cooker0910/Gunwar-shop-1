@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, Col } from 'reactstrap';
+import { Card, CardBody, Row, Col } from 'reactstrap';
 import NumericInput from 'react-numeric-input';
 import styles from './components.module.css';
 

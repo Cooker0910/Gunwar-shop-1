@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import { Card, CardBody, Container, Row, Col } from "reactstrap";
-import ReactPlayer from "react-player";
 import "@google/model-viewer/dist/model-viewer";
+import ReactPlayer from "react-player"
 import NFT from '../components/Nft';
 import nfts from '../utils/nfts';
-import play from '../assets/play.png';
-import preview from '../assets/preview.png';
 import styles from './pages.module.css';
-import modelPath from '../assets/new3dsniper.glb';
+import modelPath from '../assets/scene.glb';
+
 
 var values = Array(nfts.length+1), priceArray = [];
 
 const Weapons = (props) => {
 
   const [totalPrice, setTotalPrice] = useState(0);
-  const [isOpen, setOpen] = useState(false);
   const reducer = (previousValue, currentValue) => previousValue + currentValue;
 
   const getPrice = (tokenId, price, count) => {
@@ -23,16 +21,11 @@ const Weapons = (props) => {
     values.forEach((element, key) => {
       priceArray[key] = element[1] * element[2];
     });
-    setTotalPrice(Number(priceArray.reduce(reducer)).toFixed(1));
-    // setTotalPrice(priceArray.reduce(reducer));
+    setTotalPrice(Number(priceArray.reduce(reducer)));
   }
 
   const purchaseBtn = () => {
     props.onClick(totalPrice);
-  }
-
-  const toggleModal = () => {
-    setOpen(!isOpen);
   }
 
   return (
@@ -48,10 +41,10 @@ const Weapons = (props) => {
               <CardBody>
                 <Row>
                   <div className="col">
-                  <ReactPlayer 
-                    url="https://www.youtube.com/watch?v=XrNidz1ikAU"
-                    className={styles.nft}
-                  />
+                    <ReactPlayer 
+                      className={styles.nft}
+                      url="https://www.youtube.com/watch?v=XrNidz1ikAU"
+                    />
                   </div>
                 </Row>
               </CardBody>
